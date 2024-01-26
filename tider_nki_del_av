@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      // Use axis to trigger tooltip
+      type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
+    }
+  },
+  legend: {},
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: {
+    type: 'value'
+  },
+  yAxis: {
+    type: 'category',
+    data: ['Oslo universitetssykehus HF, amk',
+ 'Sykehuset i Vestfold HF, AMK',
+ 'Helse Bergen HF, amk',
+ 'Sørlandet Sykehus HF, AMK',
+ 'Vestre Viken HF, AMK',
+ 'Helse Stavanger HF, Stavanger universitetssykehus-',
+ 'St. Olavs Hospital HF, AMK',
+ 'Sykehuset Innlandet HF, AMK',
+ 'Universitetssykehuset Nord-Norge HF, amk',
+ 'Helse Sunnmøre HF, amk',
+ 'Helse Fonna HF, amk',
+ 'Nordlandssykehuset HF, amk',
+ 'Helse Nord Trøndelag HF, amk',
+ 'Helgelandssykehuset HF, AMK',
+ 'Finnmarkssykehuset HF, AMK',
+ 'Helse Førde HF, amk']
+  },
+  
+series: [{'name': 'Median NPR_AMK_reaksjonstid_sek',
+  'type': 'bar',
+  'stack': 'total',
+  'label': {'show': true},
+  'emphasis': {'focus': 'series'},
+  'data': [2.73,
+   1.9,
+   3.46,
+   2.32,
+   2.15,
+   2.11,
+   2.35,
+   2.42,
+   3.06,
+   2.76,
+   2.88,
+   3.27,
+   1.8,
+   2.12,
+   2.24,
+   2.3]},
+ {'name': 'Median NPR_Ambulanse_reaksjonstid_sek',
+  'type': 'bar',
+  'stack': 'total',
+  'label': {'show': true},
+  'emphasis': {'focus': 'series'},
+  'data': [1.13,
+   1.2,
+   1.59,
+   0.94,
+   1.43,
+   1.42,
+   1.53,
+   1.43,
+   0.42,
+   1.86,
+   1.32,
+   0.83,
+   1.76,
+   2.28,
+   1.91,
+   1.43]},
+ {'name': 'Median NPR_utrykningstid',
+  'type': 'bar',
+  'stack': 'total',
+  'label': {'show': true},
+  'emphasis': {'focus': 'series'},
+  'data': [7, 6, 7, 7, 6, 6, 6, 5, 6, 6, 6, 5, 4, 5, 6, 5]},
+ {'name': 'Median NPR_tid_paa_hendelsessted',
+  'type': 'bar',
+  'stack': 'total',
+  'label': {'show': true},
+  'emphasis': {'focus': 'series'},
+  'data': [25.0,
+   22.0,
+   20.0,
+   21.0,
+   24.98,
+   18.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   19.0,
+   23.0,
+   17.0,
+   24.0,
+   21.0,
+   14.0]},
+ {'name': 'Median NPR_til_leveringssted',
+  'type': 'bar',
+  'stack': 'total',
+  'label': {'show': true},
+  'emphasis': {'focus': 'series'},
+  'data': [13, 11, 13, 10, 10, 9, 10, 6, 7, 10, 8, 6, 15, 6, 6, 6]}]
+
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
