@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      // Use axis to trigger tooltip
+      type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
+    }
+  },
+  legend: {},
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: {
+    type: 'value'
+  },
+  yAxis: {
+    type: 'category',
+    data: ['FINNMARKSSYKEHUSET HF',
+ 'HELGELANDSSYKEHUSET HF',
+ 'HELSE BERGEN HF',
+ 'HELSE FONNA HF',
+ 'HELSE FØRDE HF',
+ 'HELSE MØRE OG ROMSDAL HF',
+ 'HELSE NORD-TRØNDELAG HF',
+ 'HELSE STAVANGER HF',
+ 'NORDLANDSSYKEHUSET HF',
+ 'OSLO UNIVERSITETSSYKEHUS HF',
+ 'ST OLAVS HOSPITAL HF',
+ 'SYKEHUSET I VESTFOLD HF',
+ 'SYKEHUSET INNLANDET HF',
+ 'SØRLANDET SYKEHUS HF',
+ 'UNIVERSITETSSYKEHUSET NORD-NORGE HF',
+ 'VESTRE VIKEN HF']
+  },
+  
+series: 
+
+[{"name": "AMK_reaksjonstid_sek", "type": "bar", "stack": "total", "label": {"show": true}, "emphasis": {"focus": "series"}, "data": [2.09, 1.63, 2.87, 2.95, 1.93, 2.58, 1.9, 2.25, 2.27, 2.5, 2.47, 1.96, 2.2, 2.27, 2.2, 2.17]}, {"name": "Ambulanse_reaksjonstid_sek", "type": "bar", "stack": "total", "label": {"show": true}, "emphasis": {"focus": "series"}, "data": [1.81, 1.67, 0.83, 1.39, 1.51, 1.65, 1.74, 1.41, 1.43, 1.16, 1.5, 1.21, 1.64, 1.21, 1.49, 1.43]}, {"name": "Utrykningstid_sek", "type": "bar", "stack": "total", "label": {"show": true}, "emphasis": {"focus": "series"}, "data": [6.6, 7.28, 9.24, 8.15, 9.23, 8.09, 8.76, 8.05, 7.81, 8.29, 8.32, 8.48, 9.47, 9.98, 9.17, 8.74]}, {"name": "tid_paa_hendelsessted", "type": "bar", "stack": "total", "label": {"show": true}, "emphasis": {"focus": "series"}, "data": [24.24, 20.43, 15.14, 17.28, 16.91, 20.11, 15.34, 18.26, 23.73, 27.48, 20.73, 21.24, 20.87, 21.66, 22.98, 23.34]}, {"name": "Til_leveringssted", "type": "bar", "stack": "total", "label": {"show": true}, "emphasis": {"focus": "series"}, "data": [6.96, 9.18, 16.88, 17.29, 26.71, 21.47, 21.98, 14.65, 20.76, 18.15, 16.49, 18.67, 17.55, 19.23, 12.84, 15.59]}]
+
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
