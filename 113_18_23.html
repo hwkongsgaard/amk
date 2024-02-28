@@ -1,12 +1,47 @@
-import * as echarts from 'echarts';
 
-var chartDom = document.getElementById('main');
-var myChart = echarts.init(chartDom);
-var option;
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
 
-option = {
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.5.0/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.5.0/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+  
   animationDuration: 5000,
-
+  
   tooltip: {
     trigger: 'axis',
     axisPointer: {
@@ -16,26 +51,24 @@ option = {
       }
     }
   },
-
-  legend: {
-    data: [
-      'AMK Bergen',
-      'AMK Bodø',
-      'AMK Buskerud',
-      'AMK Fonna',
-      'AMK Førde',
-      'AMK Helgeland',
-      'AMK Innlandet',
-      'AMK Kirkenes',
-      'AMK Møre og Romsdal',
-      'AMK Nord-Trøndelag',
-      'AMK Oslo',
-      'AMK Stavanger',
-      'AMK Sør-Trøndelag',
-      'AMK Sørlandet',
-      'AMK Tromsø',
-      'AMK Vestfold-Telemark'
-    ]
+  
+   legend: {
+    data: ['AMK Bergen',
+ 'AMK Bodø',
+ 'AMK Buskerud',
+ 'AMK Fonna',
+ 'AMK Førde',
+ 'AMK Helgeland',
+ 'AMK Innlandet',
+ 'AMK Kirkenes',
+ 'AMK Møre og Romsdal',
+ 'AMK Nord-Trøndelag',
+ 'AMK Oslo',
+ 'AMK Stavanger',
+ 'AMK Sør-Trøndelag',
+ 'AMK Sørlandet',
+ 'AMK Tromsø',
+ 'AMK Vestfold-Telemark']
   },
 
   toolbox: {
@@ -61,136 +94,109 @@ option = {
       type: 'value'
     }
   ],
-  series: [
-    {
-      name: 'AMK Bergen',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [46661, 50574, 48170, 55098, 60057, 64081, 8950]
-    },
-    {
-      name: 'AMK Bodø',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [17632, 16345, 15145, 16877, 18593, 19463, 3026]
-    },
-    {
-      name: 'AMK Buskerud',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [33514, 36497, 32500, 36054, 40540, 44625, 6898]
-    },
-    {
-      name: 'AMK Fonna',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [15677, 15894, 16204, 15672, 17360, 20377, 3013]
-    },
-    {
-      name: 'AMK Førde',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [9867, 9883, 9517, 10592, 12079, 13382, 1795]
-    },
-    {
-      name: 'AMK Helgeland',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [10888, 9482, 8896, 10216, 10795, 10670, 1556]
-    },
-    {
-      name: 'AMK Innlandet',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [43911, 40952, 40318, 41958, 48276, 50663, 7524]
-    },
-    {
-      name: 'AMK Kirkenes',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [9191, 9602, 8823, 8653, 9814, 9972, 1486]
-    },
-    {
-      name: 'AMK Møre og Romsdal',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [28969, 29032, 28872, 28922, 30581, 34181, 4758]
-    },
-    {
-      name: 'AMK Nord-Trøndelag',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [20399, 11404, 10380, 11404, 12237, 13162, 2041]
-    },
-    {
-      name: 'AMK Oslo',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [200467, 224963, 226440, 234260, 254400, 260169, 41251]
-    },
-    {
-      name: 'AMK Stavanger',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [32519, 35501, 36160, 37654, 42350, 42687, 6044]
-    },
-    {
-      name: 'AMK Sør-Trøndelag',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [31365, 34450, 31422, 35949, 42540, 44856, 7089]
-    },
-    {
-      name: 'AMK Sørlandet',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [44370, 42238, 41664, 46927, 59712, 55336, 7995]
-    },
-    {
-      name: 'AMK Tromsø',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [23621, 22493, 21808, 24002, 26354, 27875, 4407]
-    },
-    {
-      name: 'AMK Vestfold-Telemark',
-      type: 'line',
-      stack: 'Total',
-      areaStyle: {},
-      emphasis: { focus: 'series' },
-      data: [44321, 46931, 47765, 52114, 60117, 64010, 9722]
-    }
-  ]
+  series: [{'name': 'AMK Bergen',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [46661, 50574, 48170, 55098, 60057, 64081, 8950]},
+ {'name': 'AMK Bodø',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [17632, 16345, 15145, 16877, 18593, 19463, 3026]},
+ {'name': 'AMK Buskerud',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [33514, 36497, 32500, 36054, 40540, 44625, 6898]},
+ {'name': 'AMK Fonna',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [15677, 15894, 16204, 15672, 17360, 20377, 3013]},
+ {'name': 'AMK Førde',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [9867, 9883, 9517, 10592, 12079, 13382, 1795]},
+ {'name': 'AMK Helgeland',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [10888, 9482, 8896, 10216, 10795, 10670, 1556]},
+ {'name': 'AMK Innlandet',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [43911, 40952, 40318, 41958, 48276, 50663, 7524]},
+ {'name': 'AMK Kirkenes',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [9191, 9602, 8823, 8653, 9814, 9972, 1486]},
+ {'name': 'AMK Møre og Romsdal',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [28969, 29032, 28872, 28922, 30581, 34181, 4758]},
+ {'name': 'AMK Nord-Trøndelag',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [20399, 11404, 10380, 11404, 12237, 13162, 2041]},
+ {'name': 'AMK Oslo',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [200467, 224963, 226440, 234260, 254400, 260169, 41251]},
+ {'name': 'AMK Stavanger',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [32519, 35501, 36160, 37654, 42350, 42687, 6044]},
+ {'name': 'AMK Sør-Trøndelag',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [31365, 34450, 31422, 35949, 42540, 44856, 7089]},
+ {'name': 'AMK Sørlandet',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [44370, 42238, 41664, 46927, 59712, 55336, 7995]},
+ {'name': 'AMK Tromsø',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [23621, 22493, 21808, 24002, 26354, 27875, 4407]},
+ {'name': 'AMK Vestfold-Telemark',
+  'type': 'line',
+  'stack': 'Total',
+  'areaStyle': {},
+  'emphasis': {'focus': 'series'},
+  'data': [44321, 46931, 47765, 52114, 60117, 64010, 9722]}]
 };
 
-option && myChart.setOption(option);
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
